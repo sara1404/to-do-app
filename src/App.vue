@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Header/>
+    <ToDoBox :todos="todos"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from "./components/Header.vue"
+import ToDoBox from "./components/todo-box.vue"
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    Header,
+    ToDoBox,
+  },
+  data: function(){
+    return {
+      todos: [{
+        title: 'Ubiti se',
+        text: 'Ubij se',
+        createdAt: '25.09.2021',
+        _id: 1,
+        important: false
+      }],
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  .container{
+    height: 100%;
+    width: 100%;
+    background-color: cornsilk;
+  }
 </style>
