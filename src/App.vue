@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Header/>
-    <ToDoBox :todos="todos"/>
+    <ToDoBox :todos="todos" @createdToDo="addToDo" @removeToDo="removeToDo"/>
   </div>
 </template>
 
@@ -9,6 +9,7 @@
 
 import Header from "./components/Header.vue"
 import ToDoBox from "./components/todo-box.vue"
+import axios from "axios"
 
 export default {
   components:{
@@ -17,14 +18,22 @@ export default {
   },
   data: function(){
     return {
-      todos: [{
-        title: 'Ubiti se',
-        text: 'Ubij se',
-        createdAt: '25.09.2021',
-        _id: 1,
-        important: false
-      }],
+      todos: [],
     }
+  },
+  methods:{
+    addToDo: async function(obj){
+      this.todos.unshift(obj);
+      await axios.post('http://localhost:3000/todos', obj);
+    },
+    removeToDo: async function(id){
+      this.todos = this.todos.filter((todo) => {return todo._id != id});
+      await axios.delete('http://localhost:3000/todos/' + id);
+    }
+  },
+  created: async function(){
+      let resp = await axios.get('http://localhost:3000/todos');
+      this.todos = resp.data.data.todos;
   }
 }
 </script>
@@ -33,6 +42,6 @@ export default {
   .container{
     height: 100%;
     width: 100%;
-    background-color: cornsilk;
+    background-color: #064866;
   }
 </style>

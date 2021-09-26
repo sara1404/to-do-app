@@ -1,5 +1,14 @@
 <template>
-    <header><span>To Do App</span></header>
+    <header>
+        <div class="logo">
+            <ion-icon name="checkbox-outline"></ion-icon> 
+            <span> To Do App</span>
+        </div>
+        <div class="login-and-signin">
+            <a href="">Login</a>
+            <a href="">Sign in</a>
+        </div>
+    </header>
 </template>
 
 <script>
@@ -11,11 +20,38 @@ export default {
 <style scoped>
     header{
         display: flex;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 10%;
-        padding-left: 1.5rem;
-        border-bottom: 2px solid black;
-        font-size: 2.2rem;
+        height: 10vh;
+        padding: 0 2rem;
+        background: #ff6208;
+        color: #fff;
+    }
+    .logo{
+        display: flex;
+        align-items: center;
+        font-family: 'Birthstone', cursive;
+        font-size: 2.7rem;
+    }
+    .login-and-signin{
+        display: flex;
+        justify-content: space-between;
+        width: 7rem;
+       
+    }
+    a{
+        font-size: 1.1rem;
+        color: #fff;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    ion-icon{
+        height: 3rem;
+        width: 3rem;
+        color: #fff;
+        margin-right: .5rem;
     }
 </style>

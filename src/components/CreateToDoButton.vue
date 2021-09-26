@@ -1,11 +1,15 @@
 <template>
-    <button>Create</button>
+    <button :style="[toggle ? 'background-color: red;' : 'background-color: #308013;']">{{toggle ? 'Close' : 'Create'}}</button>
 </template>
 
 <script>
 export default {
     name: 'CreateNewToDoButton',
+    props:{
+        toggle: Boolean,
+    }
 }
+
 </script>
 
 <style scoped>
@@ -20,5 +24,6 @@ export default {
         font-size: 1rem;
         border-radius: .3rem;
         cursor: pointer;
+        border: none;
     }
 </style>
